@@ -64,7 +64,7 @@ function LoginPage() {
       <form onSubmit={handleSubmit} noValidate className="space-y-5">
         <div>
           <label
-            htmlFor="email"
+            htmlFor="login-email-input"
             className="mb-1.5 block text-sm font-semibold text-slate-700"
           >
             Email
@@ -72,7 +72,7 @@ function LoginPage() {
           <div className="relative">
             <FiMail className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-slate-400" />
             <input
-              id="email"
+              id="login-email-input"
               type="email"
               value={email}
               onChange={onEmailChange}
@@ -90,7 +90,7 @@ function LoginPage() {
 
         <div>
           <label
-            htmlFor="password"
+            htmlFor="login-password-input"
             className="mb-1.5 block text-sm font-semibold text-slate-700"
           >
             Kata Sandi
@@ -98,7 +98,7 @@ function LoginPage() {
           <div className="relative">
             <FiLock className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-slate-400" />
             <input
-              id="password"
+              id="login-password-input"
               type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={onPasswordChange}
@@ -124,7 +124,7 @@ function LoginPage() {
           )}
         </div>
 
-        <button type="submit" disabled={loading} className="btn-primary w-full">
+        <button id="login-submit-button" type="submit" disabled={loading} className="btn-primary w-full">
           {loading ? (
             <>
               <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
