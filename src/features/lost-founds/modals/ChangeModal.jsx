@@ -101,7 +101,7 @@ function ChangeModal({ lostFound, onClose }) {
             <p className="text-sm font-bold text-slate-800">
               Tandai sebagai selesai
             </p>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-600">
               Aktifkan jika barang sudah kembali ke pemiliknya.
             </p>
           </div>
@@ -111,14 +111,12 @@ function ChangeModal({ lostFound, onClose }) {
             aria-checked={isCompleted}
             aria-label="Tandai sebagai selesai"
             onClick={() => setIsCompleted((prev) => !prev)}
-            className={`relative h-7 w-12 shrink-0 cursor-pointer rounded-full transition ${
-              isCompleted ? 'bg-emerald-500' : 'bg-slate-300'
-            }`}
+            className={`relative h-7 w-12 shrink-0 cursor-pointer rounded-full transition ${isCompleted ? 'bg-emerald-500' : 'bg-slate-300'
+              }`}
           >
             <span
-              className={`absolute top-1 left-1 h-5 w-5 rounded-full bg-white shadow transition ${
-                isCompleted ? 'translate-x-5' : ''
-              }`}
+              className={`absolute top-1 left-1 h-5 w-5 rounded-full bg-white shadow transition ${isCompleted ? 'translate-x-5' : ''
+                }`}
             />
           </button>
         </div>

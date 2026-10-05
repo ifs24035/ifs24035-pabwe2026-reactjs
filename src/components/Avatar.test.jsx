@@ -37,4 +37,25 @@ describe('Avatar', () => {
     expect(avatar.tagName).toBe('DIV');
     expect(avatar).toHaveTextContent('BS');
   });
+
+  it('menyembunyikan foto dari pembaca layar jika dekoratif', () => {
+    const { container } = render(
+      <Avatar name="Budi" photo="img/users/budi.png" decorative />,
+    );
+
+    expect(screen.queryByRole('img', { name: 'Budi' })).toBeNull();
+    expect(container.querySelector('img')).toHaveAttribute('alt', '');
+  });
+
+  it('menyembunyikan inisial dari pembaca layar jika dekoratif', () => {
+    const { container } = render(
+      <Avatar name="Budi Santoso" photo={null} decorative />,
+    );
+
+    const avatar = container.firstChild;
+    expect(avatar).toHaveAttribute('aria-hidden', 'true');
+    expect(avatar).not.toHaveAttribute('role');
+    expect(avatar).not.toHaveAttribute('aria-label');
+    expect(avatar).toHaveTextContent('BS');
+  });
 });

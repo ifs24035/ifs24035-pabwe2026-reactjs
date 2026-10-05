@@ -93,8 +93,8 @@ const sumValues = (object) =>
   Object.values(object).reduce((total, value) => total + value, 0);
 
 const SERIES = [
-  { key: 'losts', bar: 'bg-rose-400', text: 'text-rose-600' },
-  { key: 'founds', bar: 'bg-emerald-400', text: 'text-emerald-600' },
+  { key: 'losts', bar: 'bg-rose-400', text: 'text-rose-700' },
+  { key: 'founds', bar: 'bg-emerald-400', text: 'text-emerald-700' },
 ];
 
 function StatsChart({ data, formatLabel, scope }) {
@@ -166,7 +166,7 @@ function StatsChart({ data, formatLabel, scope }) {
         {dayKeys.map((dayKey) => (
           <p
             key={dayKey}
-            className="flex-1 text-center text-[11px] font-medium text-slate-500 sm:text-xs"
+            className="flex-1 text-center text-[11px] font-medium text-slate-600 sm:text-xs"
           >
             {formatLabel(dayKey)}
           </p>
@@ -176,19 +176,19 @@ function StatsChart({ data, formatLabel, scope }) {
       <div className="mt-6 grid grid-cols-3 gap-3 text-center">
         <div className="rounded-xl bg-rose-50 p-3">
           <p className="text-xl font-extrabold text-rose-700">{totalLost}</p>
-          <p className="text-xs font-medium text-rose-600">Hilang</p>
+          <p className="text-xs font-medium text-rose-700">Hilang</p>
         </div>
         <div className="rounded-xl bg-emerald-50 p-3">
           <p className="text-xl font-extrabold text-emerald-700">
             {totalFound}
           </p>
-          <p className="text-xs font-medium text-emerald-600">Ditemukan</p>
+          <p className="text-xs font-medium text-emerald-700">Ditemukan</p>
         </div>
         <div className="rounded-xl bg-sky-50 p-3">
           <p className="text-xl font-extrabold text-sky-700">
             {totalCompleted}
           </p>
-          <p className="text-xs font-medium text-sky-600">Selesai</p>
+          <p className="text-xs font-medium text-sky-700">Selesai</p>
         </div>
       </div>
 
@@ -199,7 +199,7 @@ function StatsChart({ data, formatLabel, scope }) {
       </p>
 
       {totalLost + totalFound === 0 && (
-        <p className="mt-2 text-center text-sm text-slate-500">
+        <p className="mt-2 text-center text-sm text-slate-600">
           Belum ada laporan baru pada periode ini.
         </p>
       )}
@@ -242,12 +242,12 @@ function LostFoundCard({ item, isOwner, onEdit, onChangeCover, onDelete }) {
         >
           {item.title}
         </Link>
-        <p className="mt-1 line-clamp-2 text-sm text-slate-500">
+        <p className="mt-1 line-clamp-2 text-sm text-slate-600">
           {item.description}
         </p>
 
-        <div className="mt-4 flex items-center gap-2 text-xs text-slate-500">
-          <Avatar
+        <div className="mt-4 flex items-center gap-2 text-xs text-slate-600">
+          <Avatar decorative
             name={item.author.name}
             photo={item.author.photo}
             size="sm"
@@ -270,7 +270,7 @@ function LostFoundCard({ item, isOwner, onEdit, onChangeCover, onDelete }) {
                 type="button"
                 onClick={() => onEdit(item)}
                 aria-label={`Ubah ${item.title}`}
-                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl text-slate-500 transition hover:bg-brand-50 hover:text-brand-600"
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl text-slate-600 transition hover:bg-brand-50 hover:text-brand-600"
               >
                 <FiEdit2 />
               </button>
@@ -278,7 +278,7 @@ function LostFoundCard({ item, isOwner, onEdit, onChangeCover, onDelete }) {
                 type="button"
                 onClick={() => onChangeCover(item)}
                 aria-label={`Ubah cover ${item.title}`}
-                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl text-slate-500 transition hover:bg-brand-50 hover:text-brand-600"
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl text-slate-600 transition hover:bg-brand-50 hover:text-brand-600"
               >
                 <FiCamera />
               </button>
@@ -286,7 +286,7 @@ function LostFoundCard({ item, isOwner, onEdit, onChangeCover, onDelete }) {
                 type="button"
                 onClick={() => onDelete(item)}
                 aria-label={`Hapus ${item.title}`}
-                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl text-slate-500 transition hover:bg-rose-50 hover:text-rose-600"
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl text-slate-600 transition hover:bg-rose-50 hover:text-rose-600"
               >
                 <FiTrash2 />
               </button>
@@ -396,7 +396,7 @@ function HomePage() {
           <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
             Dashboard
           </h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-slate-600">
             Pantau laporan barang hilang dan temuan di satu tempat.
           </p>
         </div>
@@ -410,7 +410,7 @@ function HomePage() {
         </button>
       </div>
 
-            {/* Kartu metrik */}
+      {/* Kartu metrik */}
       <section>
         <div className="mb-4 inline-flex rounded-xl bg-slate-100 p-1">
           {SCOPES.map(({ value, label }) => (
@@ -419,11 +419,10 @@ function HomePage() {
               type="button"
               onClick={() => setScope(value)}
               aria-pressed={scope === value}
-              className={`cursor-pointer rounded-lg px-4 py-1.5 text-sm font-semibold transition ${
-                scope === value
+              className={`cursor-pointer rounded-lg px-4 py-1.5 text-sm font-semibold transition ${scope === value
                   ? 'bg-white text-brand-700 shadow-sm'
-                  : 'text-slate-500 hover:text-slate-700'
-              }`}
+                  : 'text-slate-600 hover:text-slate-700'
+                }`}
             >
               {label}
             </button>
@@ -439,7 +438,7 @@ function HomePage() {
                 <Icon />
               </div>
               <div>
-                <p className="text-sm font-medium text-slate-500">{label}</p>
+                <p className="text-sm font-medium text-slate-600">{label}</p>
                 {stats ? (
                   <p className="text-3xl font-extrabold text-slate-900">
                     {stats.summary[scope][key]}
@@ -468,7 +467,7 @@ function HomePage() {
               <h2 className="text-lg font-bold text-slate-900">
                 Statistik Laporan
               </h2>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-600">
                 {PERIODS[period].caption} &middot;{' '}
                 {scope === 'all' ? 'Semua laporan' : 'Laporan saya'}
               </p>
@@ -482,11 +481,10 @@ function HomePage() {
                 type="button"
                 onClick={() => setPeriod(key)}
                 aria-pressed={period === key}
-                className={`cursor-pointer rounded-lg px-4 py-1.5 text-sm font-semibold transition ${
-                  period === key
+                className={`cursor-pointer rounded-lg px-4 py-1.5 text-sm font-semibold transition ${period === key
                     ? 'bg-white text-brand-700 shadow-sm'
-                    : 'text-slate-500 hover:text-slate-700'
-                }`}
+                    : 'text-slate-600 hover:text-slate-700'
+                  }`}
               >
                 {label}
               </button>
@@ -494,7 +492,7 @@ function HomePage() {
           </div>
         </div>
 
-                {!stats ? (
+        {!stats ? (
           <div className="h-64 animate-pulse rounded-xl bg-slate-100" />
         ) : stats.charts[scope][period] ? (
           <StatsChart
@@ -503,8 +501,8 @@ function HomePage() {
             scope={scope}
           />
         ) : (
-          
-          <p className="py-12 text-center text-sm text-slate-500">
+
+          <p className="py-12 text-center text-sm text-slate-600">
             Data statistik belum tersedia.
           </p>
         )}
@@ -537,11 +535,10 @@ function HomePage() {
                   type="button"
                   onClick={() => setStatus(value)}
                   aria-pressed={status === value}
-                  className={`cursor-pointer rounded-lg px-4 py-1.5 text-sm font-semibold transition ${
-                    status === value
+                  className={`cursor-pointer rounded-lg px-4 py-1.5 text-sm font-semibold transition ${status === value
                       ? 'bg-white text-brand-700 shadow-sm'
-                      : 'text-slate-500 hover:text-slate-700'
-                  }`}
+                      : 'text-slate-600 hover:text-slate-700'
+                    }`}
                 >
                   {label}
                 </button>
@@ -566,11 +563,10 @@ function HomePage() {
                 type="button"
                 onClick={() => setOnlyMine((prev) => !prev)}
                 aria-pressed={onlyMine}
-                className={`cursor-pointer rounded-xl border px-4 py-2 text-sm font-semibold transition ${
-                  onlyMine
+                className={`cursor-pointer rounded-xl border px-4 py-2 text-sm font-semibold transition ${onlyMine
                     ? 'border-brand-300 bg-brand-50 text-brand-700'
                     : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
-                }`}
+                  }`}
               >
                 Laporan saya
               </button>
@@ -603,13 +599,13 @@ function HomePage() {
             <p className="font-semibold text-slate-700">
               Tidak ada laporan ditemukan
             </p>
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="mt-1 text-sm text-slate-600">
               Ubah filter atau kata kunci, atau buat laporan baru.
             </p>
           </div>
         ) : (
           <>
-            <p className="mb-4 text-sm text-slate-500">
+            <p className="mb-4 text-sm text-slate-600">
               Menampilkan {visibleItems.length} laporan
             </p>
             <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">

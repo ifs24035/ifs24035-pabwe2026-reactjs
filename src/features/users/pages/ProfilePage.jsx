@@ -27,8 +27,7 @@ import {
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const inputClass = (hasError) =>
-  `input-field pl-11 ${
-    hasError ? 'border-rose-400 focus:border-rose-500 focus:ring-rose-100' : ''
+  `input-field pl-11 ${hasError ? 'border-rose-400 focus:border-rose-500 focus:ring-rose-100' : ''
   }`;
 
 const FieldError = ({ message }) =>
@@ -192,7 +191,7 @@ function ProfileContent({ profile }) {
         <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
           Profil Saya
         </h1>
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-sm text-slate-600">
           Kelola informasi akun dan keamanan kamu.
         </p>
       </div>
@@ -210,7 +209,7 @@ function ProfileContent({ profile }) {
                   className="h-28 w-28 rounded-full object-cover shadow-lg ring-4 ring-white"
                 />
               ) : (
-                <Avatar
+                <Avatar decorative
                   name={profile.name}
                   photo={profile.photo}
                   size="xl"
@@ -286,7 +285,7 @@ function ProfileContent({ profile }) {
               <h3 className="text-lg font-bold text-slate-900">
                 Informasi Profil
               </h3>
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-slate-600">
                 Perbarui nama dan alamat email akun kamu.
               </p>
             </div>
@@ -349,7 +348,7 @@ function ProfileContent({ profile }) {
                 <h3 className="text-lg font-bold text-slate-900">
                   Ganti Kata Sandi
                 </h3>
-                <p className="text-sm text-slate-500">
+                <p className="text-sm text-slate-600">
                   Gunakan kata sandi yang kuat dan jangan dibagikan ke siapa pun.
                 </p>
               </div>

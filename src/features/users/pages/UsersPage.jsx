@@ -36,7 +36,7 @@ function UsersPage() {
           <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
             Daftar Pengguna
           </h1>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-slate-600">
             Seluruh pengguna yang terdaftar di Lost &amp; Founds.
           </p>
         </div>
@@ -85,7 +85,7 @@ function UsersPage() {
               ? 'Belum ada pengguna'
               : 'Pengguna tidak ditemukan'}
           </p>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-slate-600">
             {users.length === 0
               ? 'Data pengguna akan tampil di sini.'
               : 'Coba gunakan kata kunci yang lain.'}
@@ -100,7 +100,7 @@ function UsersPage() {
               onClick={() => dispatch(setUserActionCreator(item))}
               className="card flex cursor-pointer items-center gap-4 p-5 text-left transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-100"
             >
-              <Avatar name={item.name} photo={item.photo} size="lg" />
+              <Avatar decorative name={item.name} photo={item.photo} size="lg" />
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2">
                   <p className="truncate font-bold text-slate-800">
@@ -112,7 +112,7 @@ function UsersPage() {
                     </span>
                   )}
                 </div>
-                <p className="truncate text-sm text-slate-500">{item.email}</p>
+                <p className="truncate text-sm text-slate-600">{item.email}</p>
               </div>
             </button>
           ))}
@@ -143,7 +143,7 @@ function UsersPage() {
               <FiX />
             </button>
             <div className="-mt-12 px-6 pb-6">
-              <Avatar
+              <Avatar decorative
                 name={user.name}
                 photo={user.photo}
                 size="xl"

@@ -103,10 +103,10 @@ function DetailPage() {
         <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-slate-100 text-2xl text-slate-400">
           <FiInbox />
         </div>
-        <p className="text-lg font-bold text-slate-800">
+        <h1 className="text-lg font-bold text-slate-800">
           Laporan tidak ditemukan
-        </p>
-        <p className="mt-1 text-sm text-slate-500">
+        </h1>
+        <p className="mt-1 text-sm text-slate-600">
           Laporan mungkin sudah dihapus atau tautannya tidak valid.
         </p>
         <Link to="/" className="btn-primary mt-6">
@@ -124,7 +124,7 @@ function DetailPage() {
     <div>
       <Link
         to="/"
-        className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-500 transition hover:text-brand-600"
+        className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-600 transition hover:text-brand-600"
       >
         <FiArrowLeft />
         Kembali ke Dashboard
@@ -140,7 +140,7 @@ function DetailPage() {
               className="max-h-128 w-auto max-w-full object-contain"
             />
           ) : (
-            <div className="flex flex-col items-center gap-2 py-16 text-slate-400">
+            <div className="flex flex-col items-center gap-2 py-16 text-slate-600">
               <FiImage className="h-14 w-14" />
               <p className="text-sm font-medium">Belum ada foto bukti</p>
             </div>
@@ -159,13 +159,13 @@ function DetailPage() {
 
           <dl className="mt-6 grid gap-4 rounded-2xl bg-slate-50 p-5 sm:grid-cols-3">
             <div className="flex items-center gap-3">
-              <Avatar
+              <Avatar decorative
                 name={lostFound.author.name}
                 photo={lostFound.author.photo}
                 size="md"
               />
               <div className="min-w-0">
-                <dt className="text-xs font-medium text-slate-500">Pelapor</dt>
+                <dt className="text-xs font-medium text-slate-600">Pelapor</dt>
                 <dd className="truncate text-sm font-bold text-slate-800">
                   {lostFound.author.name}
                 </dd>
@@ -176,7 +176,7 @@ function DetailPage() {
                 <FiCalendar />
               </span>
               <div>
-                <dt className="text-xs font-medium text-slate-500">
+                <dt className="text-xs font-medium text-slate-600">
                   Tanggal lapor
                 </dt>
                 <dd className="text-sm font-bold text-slate-800">
@@ -189,7 +189,7 @@ function DetailPage() {
                 <FiClock />
               </span>
               <div>
-                <dt className="text-xs font-medium text-slate-500">
+                <dt className="text-xs font-medium text-slate-600">
                   Terakhir diperbarui
                 </dt>
                 <dd className="text-sm font-bold text-slate-800">
@@ -200,7 +200,7 @@ function DetailPage() {
           </dl>
 
           <div className="mt-8">
-            <h2 className="text-sm font-bold tracking-wider text-slate-400 uppercase">
+            <h2 className="text-sm font-bold text-slate-600">
               Deskripsi
             </h2>
             <p className="mt-2 leading-relaxed whitespace-pre-line text-slate-700">

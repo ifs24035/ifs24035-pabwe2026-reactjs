@@ -56,43 +56,49 @@ describe('App routing', () => {
     cleanup();
   });
 
-  it('menampilkan LoginPage di dalam AuthLayout pada /auth/login', () => {
+  it('menampilkan indikator memuat saat halaman masih diunduh', async () => {
     renderAt('/auth/login');
-    expect(screen.getByTestId('auth-layout')).toBeTruthy();
-    expect(screen.getByTestId('login-page')).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Memuat halaman...' })).toBeTruthy();
+    expect(await screen.findByTestId('login-page')).toBeTruthy();
   });
 
-  it('menampilkan RegisterPage di dalam AuthLayout pada /auth/register', () => {
+  it('menampilkan LoginPage di dalam AuthLayout pada /auth/login', async () => {
+    renderAt('/auth/login');
+    expect(await screen.findByTestId('auth-layout')).toBeTruthy();
+    expect(await screen.findByTestId('login-page')).toBeTruthy();
+  });
+
+  it('menampilkan RegisterPage di dalam AuthLayout pada /auth/register', async () => {
     renderAt('/auth/register');
-    expect(screen.getByTestId('auth-layout')).toBeTruthy();
-    expect(screen.getByTestId('register-page')).toBeTruthy();
+    expect(await screen.findByTestId('auth-layout')).toBeTruthy();
+    expect(await screen.findByTestId('register-page')).toBeTruthy();
   });
 
-  it('menampilkan HomePage di dalam LostFoundLayout pada /', () => {
+  it('menampilkan HomePage di dalam LostFoundLayout pada /', async () => {
     renderAt('/');
-    expect(screen.getByTestId('lost-found-layout')).toBeTruthy();
-    expect(screen.getByTestId('home-page')).toBeTruthy();
+    expect(await screen.findByTestId('lost-found-layout')).toBeTruthy();
+    expect(await screen.findByTestId('home-page')).toBeTruthy();
   });
 
-  it('menampilkan DetailPage pada /lost-founds/:id', () => {
+  it('menampilkan DetailPage pada /lost-founds/:id', async () => {
     renderAt('/lost-founds/123');
-    expect(screen.getByTestId('lost-found-layout')).toBeTruthy();
-    expect(screen.getByTestId('detail-page')).toBeTruthy();
+    expect(await screen.findByTestId('lost-found-layout')).toBeTruthy();
+    expect(await screen.findByTestId('detail-page')).toBeTruthy();
   });
 
-  it('menampilkan UsersPage pada /users', () => {
+  it('menampilkan UsersPage pada /users', async () => {
     renderAt('/users');
-    expect(screen.getByTestId('users-page')).toBeTruthy();
+    expect(await screen.findByTestId('users-page')).toBeTruthy();
   });
 
-  it('menampilkan ProfilePage pada /profile', () => {
+  it('menampilkan ProfilePage pada /profile', async () => {
     renderAt('/profile');
-    expect(screen.getByTestId('profile-page')).toBeTruthy();
+    expect(await screen.findByTestId('profile-page')).toBeTruthy();
   });
 
-  it('mengarahkan route tidak dikenal ke / (HomePage)', () => {
+  it('mengarahkan route tidak dikenal ke / (HomePage)', async () => {
     renderAt('/halaman-tidak-ada');
-    expect(screen.getByTestId('home-page')).toBeTruthy();
+    expect(await screen.findByTestId('home-page')).toBeTruthy();
     expect(screen.queryByTestId('auth-layout')).toBeNull();
   });
 });

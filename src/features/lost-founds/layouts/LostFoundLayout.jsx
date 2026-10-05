@@ -33,14 +33,10 @@ function LostFoundLayout() {
 
   if (!isProfile) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-4">
-        <img
-          src="/logo.svg"
-          alt="Logo Lost & Founds"
-          className="h-14 w-14 animate-pulse rounded-2xl shadow-lg"
-        />
-        <p className="text-sm font-medium text-slate-500">Memuat sesi...</p>
-      </div>
+      <main className="flex min-h-screen flex-col items-center justify-center gap-4">
+        <img src="/logo.svg" alt="Logo Lost & Founds" className="h-14 w-14 animate-pulse rounded-2xl shadow-lg" />
+        <h1 className="text-sm font-medium text-slate-600">Memuat sesi...</h1>
+      </main>
     );
   }
 

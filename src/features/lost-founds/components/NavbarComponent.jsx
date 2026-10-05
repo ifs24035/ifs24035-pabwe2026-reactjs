@@ -78,9 +78,10 @@ function NavbarComponent({ onToggleSidebar }) {
               onClick={() => setOpen((prev) => !prev)}
               aria-haspopup="menu"
               aria-expanded={open}
+              aria-label={`Menu akun ${profile.name}`}
               className="flex cursor-pointer items-center gap-2 rounded-full py-1 pr-2 pl-1 transition hover:bg-slate-100"
             >
-              <Avatar name={profile.name} photo={profile.photo} size="sm" />
+              <Avatar decorative name={profile.name} photo={profile.photo} size="sm" />
               <span className="hidden max-w-32 truncate text-sm font-semibold text-slate-700 md:block">
                 {profile.name}
               </span>
@@ -98,7 +99,7 @@ function NavbarComponent({ onToggleSidebar }) {
                   <p className="truncate text-sm font-bold text-slate-800">
                     {profile.name}
                   </p>
-                  <p className="truncate text-xs text-slate-500">
+                  <p className="truncate text-xs text-slate-600">
                     {profile.email}
                   </p>
                 </div>

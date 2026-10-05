@@ -92,7 +92,7 @@ describe('LostFoundLayout', () => {
       profile: PROFILE,
     });
     const sidebar = container.querySelector('aside');
-    const overlay = container.querySelector('[aria-hidden="true"]');
+    const overlay = container.querySelector('div.fixed[aria-hidden="true"]');
 
     expect(sidebar).toHaveClass('-translate-x-full');
 

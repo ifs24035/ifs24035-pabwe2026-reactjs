@@ -9,7 +9,13 @@ const SIZES = {
   xl: 'h-28 w-28 text-3xl',
 };
 
-function Avatar({ name, photo, size = 'md', className = '' }) {
+function Avatar({
+  name,
+  photo,
+  size = 'md',
+  className = '',
+  decorative = false,
+}) {
   const [failed, setFailed] = useState(false);
   const src = getAssetUrl(photo);
   const sizeClass = SIZES[size];
@@ -18,7 +24,7 @@ function Avatar({ name, photo, size = 'md', className = '' }) {
     return (
       <img
         src={src}
-        alt={name}
+        alt={decorative ? '' : name}
         onError={() => setFailed(true)}
         className={`${sizeClass} shrink-0 rounded-full object-cover ${className}`}
       />
@@ -27,8 +33,9 @@ function Avatar({ name, photo, size = 'md', className = '' }) {
 
   return (
     <div
-      role="img"
-      aria-label={name}
+      role={decorative ? undefined : 'img'}
+      aria-label={decorative ? undefined : name}
+      aria-hidden={decorative ? true : undefined}
       className={`${sizeClass} flex shrink-0 items-center justify-center rounded-full bg-linear-to-br from-brand-500 to-violet-600 font-bold text-white ${className}`}
     >
       {getInitials(name)}

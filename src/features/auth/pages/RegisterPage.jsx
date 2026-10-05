@@ -18,8 +18,7 @@ import {
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const inputClass = (hasError) =>
-  `input-field pl-11 ${
-    hasError ? 'border-rose-400 focus:border-rose-500 focus:ring-rose-100' : ''
+  `input-field pl-11 ${hasError ? 'border-rose-400 focus:border-rose-500 focus:ring-rose-100' : ''
   }`;
 
 function RegisterPage() {
@@ -95,10 +94,10 @@ function RegisterPage() {
   return (
     <div className="card p-8 shadow-xl shadow-slate-200/60">
       <div className="mb-8">
-        <h2 className="text-2xl font-extrabold tracking-tight text-slate-900">
+        <h1 className="text-2xl font-extrabold tracking-tight text-slate-900">
           Buat akun baru ✨
-        </h2>
-        <p className="mt-2 text-sm text-slate-500">
+        </h1>
+        <p className="mt-2 text-sm text-slate-600">
           Daftar gratis dan mulai laporkan barang hilang atau temuan.
         </p>
       </div>
@@ -180,7 +179,7 @@ function RegisterPage() {
               aria-label={
                 showPassword ? 'Sembunyikan kata sandi' : 'Tampilkan kata sandi'
               }
-              className="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer text-slate-400 transition hover:text-slate-600"
+              className="absolute top-1/2 right-2 flex h-9 w-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-lg text-slate-600 transition hover:text-slate-700"
             >
               {showPassword ? <FiEyeOff /> : <FiEye />}
             </button>
@@ -233,7 +232,7 @@ function RegisterPage() {
         </button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-slate-500">
+      <p className="mt-6 text-center text-sm text-slate-600">
         Sudah punya akun?{' '}
         <Link
           to="/auth/login"
