@@ -1,9 +1,11 @@
 import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import AuthLayout from './features/auth/layouts/AuthLayout';
+import LoginPage from './features/auth/pages/LoginPage';
+import RegisterPage from './features/auth/pages/RegisterPage';
 
-const AuthLayout = lazy(() => import('./features/auth/layouts/AuthLayout'));
-const LoginPage = lazy(() => import('./features/auth/pages/LoginPage'));
-const RegisterPage = lazy(() => import('./features/auth/pages/RegisterPage'));
+// Halaman terproteksi dimuat saat dibutuhkan; halaman auth dimuat langsung
+// agar halaman login tampil tanpa menunggu rantai request tambahan.
 const LostFoundLayout = lazy(
   () => import('./features/lost-founds/layouts/LostFoundLayout'),
 );

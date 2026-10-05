@@ -17,22 +17,22 @@ describe('toolsHelper', () => {
     Swal.fire.mockReset();
   });
 
-  it('showSuccessDialog menampilkan dialog sukses', () => {
-    showSuccessDialog('Berhasil disimpan');
+  it('showSuccessDialog menampilkan dialog sukses', async () => {
+    await showSuccessDialog('Berhasil disimpan');
     expect(Swal.fire).toHaveBeenCalledWith(
       expect.objectContaining({ icon: 'success', text: 'Berhasil disimpan' }),
     );
   });
 
-  it('showErrorDialog menampilkan dialog error', () => {
-    showErrorDialog('Gagal');
+  it('showErrorDialog menampilkan dialog error', async () => {
+    await showErrorDialog('Gagal');
     expect(Swal.fire).toHaveBeenCalledWith(
       expect.objectContaining({ icon: 'error', text: 'Gagal' }),
     );
   });
 
-  it('showWarningDialog menampilkan dialog peringatan', () => {
-    showWarningDialog('Hati-hati');
+  it('showWarningDialog menampilkan dialog peringatan', async () => {
+    await showWarningDialog('Hati-hati');
     expect(Swal.fire).toHaveBeenCalledWith(
       expect.objectContaining({ icon: 'warning', text: 'Hati-hati' }),
     );

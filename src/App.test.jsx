@@ -56,10 +56,10 @@ describe('App routing', () => {
     cleanup();
   });
 
-  it('menampilkan indikator memuat saat halaman masih diunduh', async () => {
-    renderAt('/auth/login');
+  it('menampilkan indikator memuat saat halaman terproteksi masih diunduh', async () => {
+    renderAt('/');
     expect(screen.getByRole('heading', { name: 'Memuat halaman...' })).toBeTruthy();
-    expect(await screen.findByTestId('login-page')).toBeTruthy();
+    expect(await screen.findByTestId('home-page')).toBeTruthy();
   });
 
   it('menampilkan LoginPage di dalam AuthLayout pada /auth/login', async () => {

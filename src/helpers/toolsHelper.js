@@ -1,37 +1,45 @@
-import Swal from 'sweetalert2';
-
 const BRAND_COLOR = '#4f46e5';
 
-export const showSuccessDialog = (message) =>
-  Swal.fire({
+// SweetAlert2 dimuat saat pertama dibutuhkan agar tidak membebani bundle awal
+const loadSwal = async () => (await import('sweetalert2')).default;
+
+export const showSuccessDialog = async (message) => {
+  const Swal = await loadSwal();
+  return Swal.fire({
     icon: 'success',
     title: 'Berhasil',
     text: message,
     timer: 1800,
     showConfirmButton: false,
   });
+};
 
-export const showErrorDialog = (message) =>
-  Swal.fire({
+export const showErrorDialog = async (message) => {
+  const Swal = await loadSwal();
+  return Swal.fire({
     icon: 'error',
     title: 'Oops...',
     text: message,
     confirmButtonColor: BRAND_COLOR,
   });
+};
 
-export const showWarningDialog = (message) =>
-  Swal.fire({
+export const showWarningDialog = async (message) => {
+  const Swal = await loadSwal();
+  return Swal.fire({
     icon: 'warning',
     title: 'Perhatian',
     text: message,
     confirmButtonColor: BRAND_COLOR,
   });
+};
 
 export const showConfirmDialog = async (
   title,
   text,
   confirmText = 'Ya, lanjutkan',
 ) => {
+  const Swal = await loadSwal();
   const result = await Swal.fire({
     icon: 'question',
     title,

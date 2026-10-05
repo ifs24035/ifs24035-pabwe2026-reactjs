@@ -3,11 +3,43 @@ import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
+// Menyisipkan CSS hasil build langsung ke index.html agar tidak memblokir render
+function inlineCss() {
+  return {
+    name: 'inline-css',
+    apply: 'build',
+    enforce: 'post',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html, ctx) {
+        if (!ctx.bundle) return html;
+
+        let result = html;
+        Object.entries(ctx.bundle).forEach(([fileName, asset]) => {
+          if (asset.type !== 'asset' || !fileName.endsWith('.css')) return;
+
+          const escaped = fileName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          const linkTag = new RegExp(`<link[^>]*href="[^"]*${escaped}"[^>]*>`);
+          if (!linkTag.test(result)) return;
+
+          const css =
+            typeof asset.source === 'string'
+              ? asset.source
+              : Buffer.from(asset.source).toString('utf8');
+          result = result.replace(linkTag, () => `<style>${css}</style>`);
+        });
+
+        return result;
+      },
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
 
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), inlineCss()],
     server: {
       port: Number(env.APP_PORT) || 3000,
     },
