@@ -35,11 +35,24 @@ function inlineCss() {
   };
 }
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd(), '');
 
   return {
     plugins: [react(), tailwindcss(), inlineCss()],
+    resolve: {
+      // Preact hanya dipakai pada build produksi; dev dan tes tetap memakai React
+      alias:
+        command === 'build'
+          ? [
+              { find: /^react-dom\/client$/, replacement: 'preact/compat/client' },
+              { find: /^react-dom$/, replacement: 'preact/compat' },
+              { find: /^react\/jsx-runtime$/, replacement: 'preact/jsx-runtime' },
+              { find: /^react\/jsx-dev-runtime$/, replacement: 'preact/jsx-runtime' },
+              { find: /^react$/, replacement: 'preact/compat' },
+            ]
+          : [],
+    },
     server: {
       port: Number(env.APP_PORT) || 3000,
     },
