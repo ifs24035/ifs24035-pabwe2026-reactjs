@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useSelector } from 'react-redux';
@@ -29,6 +30,10 @@ function NavbarHost({ onToggleSidebar }) {
     <p>Sesi berakhir</p>
   );
 }
+
+NavbarHost.propTypes = {
+  onToggleSidebar: PropTypes.func.isRequired,
+};
 
 const renderNavbar = (onToggleSidebar = vi.fn()) =>
   renderWithProviders(<NavbarHost onToggleSidebar={onToggleSidebar} />, {

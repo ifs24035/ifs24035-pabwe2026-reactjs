@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { FiImage, FiUploadCloud } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
@@ -107,5 +108,13 @@ function ChangeCoverModal({ lostFound, onClose }) {
     </Modal>
   );
 }
+
+ChangeCoverModal.propTypes = {
+  lostFound: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    cover: PropTypes.string,
+  }).isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default ChangeCoverModal;

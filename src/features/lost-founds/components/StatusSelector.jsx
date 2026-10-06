@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { FiPackage, FiSearch } from 'react-icons/fi';
 
 const OPTIONS = [
@@ -46,5 +47,10 @@ function StatusSelector({ value, onChange }) {
     </div>
   );
 }
+
+StatusSelector.propTypes = {
+  value: PropTypes.oneOf(['lost', 'found']).isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default StatusSelector;

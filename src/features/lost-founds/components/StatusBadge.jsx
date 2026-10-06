@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export function StatusBadge({ status, className = '' }) {
   const isLost = status === 'lost';
 
@@ -28,3 +30,13 @@ export function CompletedBadge({ isCompleted, className = '' }) {
     </span>
   );
 }
+
+StatusBadge.propTypes = {
+  status: PropTypes.oneOf(['lost', 'found']).isRequired,
+  className: PropTypes.string,
+};
+
+CompletedBadge.propTypes = {
+  isCompleted: PropTypes.bool.isRequired,
+  className: PropTypes.string,
+};

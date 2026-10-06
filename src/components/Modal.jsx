@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { FiX } from 'react-icons/fi';
 
@@ -12,18 +13,22 @@ function Modal({ title, subtitle, onClose, children }) {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
+  const handleBackdropClick = (event) => {
+    if (event.target === event.currentTarget) onClose();
+  };
+
   return (
-    <div
-      role="presentation"
-      onClick={onClose}
-      className="fixed inset-0 z-60 overflow-y-auto bg-slate-900/50 backdrop-blur-sm"
-    >
-      <div className="flex min-h-full items-center justify-center p-4">
+    <div className="fixed inset-0 z-60 overflow-y-auto bg-slate-900/50 backdrop-blur-sm">
+      {/* Klik di area gelap (bukan di dalam dialog) menutup modal */}
+      <div
+        role="presentation"
+        onClick={handleBackdropClick}
+        className="flex min-h-full items-center justify-center p-4"
+      >
         <div
           role="dialog"
           aria-modal="true"
           aria-label={title}
-          onClick={(event) => event.stopPropagation()}
           className="card w-full max-w-lg p-6 shadow-2xl sm:p-8"
         >
           <div className="mb-6 flex items-start justify-between gap-4">
@@ -50,5 +55,12 @@ function Modal({ title, subtitle, onClose, children }) {
     </div>
   );
 }
+
+Modal.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  onClose: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 export default Modal;

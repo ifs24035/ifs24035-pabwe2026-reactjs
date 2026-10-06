@@ -28,6 +28,10 @@ function UsersPage() {
 
   const closeDetail = () => dispatch(setUserActionCreator(null));
 
+  const handleBackdropClick = (event) => {
+    if (event.target === event.currentTarget) closeDetail();
+  };
+  
   return (
     <div>
       {/* Header */}
@@ -123,14 +127,13 @@ function UsersPage() {
       {user && (
         <div
           role="presentation"
-          onClick={closeDetail}
+          onClick={handleBackdropClick}
           className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm"
         >
           <div
             role="dialog"
             aria-modal="true"
             aria-label="Detail pengguna"
-            onClick={(event) => event.stopPropagation()}
             className="card relative w-full max-w-sm overflow-hidden text-center shadow-2xl"
           >
             <div className="h-24 bg-linear-to-br from-brand-600 via-brand-500 to-violet-600" />

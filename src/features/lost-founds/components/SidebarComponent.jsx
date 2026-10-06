@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   FiBarChart2,
   FiGrid,
@@ -94,5 +95,10 @@ function SidebarComponent({ open, onClose }) {
     </>
   );
 }
+
+SidebarComponent.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default SidebarComponent;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import {
   FiCalendar,
@@ -34,6 +35,10 @@ const FieldError = ({ message }) =>
   message ? (
     <p className="mt-1.5 text-xs font-medium text-rose-600">{message}</p>
   ) : null;
+
+FieldError.propTypes = {
+  message: PropTypes.string,
+};
 
 function ProfileContent({ profile }) {
   const dispatch = useDispatch();
@@ -447,6 +452,15 @@ function ProfileContent({ profile }) {
     </div>
   );
 }
+
+ProfileContent.propTypes = {
+  profile: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    photo: PropTypes.string,
+    created_at: PropTypes.string,
+  }).isRequired,
+};
 
 function ProfilePage() {
   const profile = useSelector((states) => states.profile);

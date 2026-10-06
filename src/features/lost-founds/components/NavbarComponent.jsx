@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { FiChevronDown, FiLogOut, FiMenu, FiUser } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
@@ -131,5 +132,9 @@ function NavbarComponent({ onToggleSidebar }) {
     </header>
   );
 }
+
+NavbarComponent.propTypes = {
+  onToggleSidebar: PropTypes.func.isRequired,
+};
 
 export default NavbarComponent;

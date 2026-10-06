@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { FiPlus } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
@@ -112,5 +113,9 @@ function AddModal({ onClose }) {
     </Modal>
   );
 }
+
+AddModal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
 
 export default AddModal;

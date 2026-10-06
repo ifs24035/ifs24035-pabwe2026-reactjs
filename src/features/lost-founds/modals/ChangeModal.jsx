@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { FiSave } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
@@ -139,5 +140,16 @@ function ChangeModal({ lostFound, onClose }) {
     </Modal>
   );
 }
+
+ChangeModal.propTypes = {
+  lostFound: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    status: PropTypes.oneOf(['lost', 'found']).isRequired,
+    is_completed: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
+  }).isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default ChangeModal;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   FiBarChart2,
@@ -207,6 +208,17 @@ function StatsChart({ data, formatLabel, scope }) {
   );
 }
 
+StatsChart.propTypes = {
+  data: PropTypes.shape({
+    stats_losts: PropTypes.objectOf(PropTypes.number).isRequired,
+    stats_founds: PropTypes.objectOf(PropTypes.number).isRequired,
+    stats_losts_completed: PropTypes.objectOf(PropTypes.number).isRequired,
+    stats_founds_completed: PropTypes.objectOf(PropTypes.number).isRequired,
+  }).isRequired,
+  formatLabel: PropTypes.func.isRequired,
+  scope: PropTypes.oneOf(['all', 'mine']).isRequired,
+};
+
 function LostFoundCard({ item, isOwner, onEdit, onChangeCover, onDelete }) {
   const coverUrl = getAssetUrl(item.cover);
   const detailPath = `/lost-founds/${item.id}`;
@@ -297,6 +309,26 @@ function LostFoundCard({ item, isOwner, onEdit, onChangeCover, onDelete }) {
     </article>
   );
 }
+
+LostFoundCard.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    status: PropTypes.oneOf(['lost', 'found']).isRequired,
+    is_completed: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
+    cover: PropTypes.string,
+    created_at: PropTypes.string,
+    author: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      photo: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
+  isOwner: PropTypes.bool.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  onChangeCover: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
 
 function HomePage() {
   const dispatch = useDispatch();

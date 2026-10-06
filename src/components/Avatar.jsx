@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { getAssetUrl } from '../helpers/apiHelper';
 import { getInitials } from '../helpers/toolsHelper';
@@ -42,5 +43,13 @@ function Avatar({
     </div>
   );
 }
+
+Avatar.propTypes = {
+  name: PropTypes.string.isRequired,
+  photo: PropTypes.string,
+  size: PropTypes.oneOf(['sm', 'md', 'lg', 'xl']),
+  className: PropTypes.string,
+  decorative: PropTypes.bool,
+};
 
 export default Avatar;
